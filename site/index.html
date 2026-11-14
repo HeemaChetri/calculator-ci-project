@@ -1,79 +1,114 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator Application</title>
 
     <style>
         body {
-            font-family: Arial;
-            text-align: center;
-            background: #f2f2f2;
-            padding: 50px;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
 
         .container {
-            background: white;
-            padding: 30px;
-            width: 300px;
-            margin: auto;
-            border-radius: 12px;
+            background-color: white;
+            padding: 40px;
+            width: 340px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 18px;
         }
 
         input {
-            padding: 10px;
-            margin: 10px;
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            box-sizing: border-box;
         }
 
         button {
-            padding: 10px 20px;
-            background: blue;
+            background-color: blue;
             color: white;
             border: none;
+            padding: 13px 25px;
+            margin-top: 20px;
             cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        #result {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .version {
+            margin-top: 25px;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>Calculator Application</h1>
+        <h1>Calculator Application - Faulty Release</h1>
 
-    <p>Deployment Automation Using GitHub Actions</p>
+        <p>Deployment Automation Using GitHub Actions</p>
 
-    <input type="number" id="num1"
-    placeholder="First number">
+        <input type="number" id="num1" placeholder="Enter first number">
 
-    <input type="number" id="num2"
-    placeholder="Second number">
+        <input type="number" id="num2" placeholder="Enter second number">
 
-    <br><br>
+        <br>
 
-    <button onclick="calculate()">Add Numbers</button>
+        <button onclick="addNumbers()">Add Numbers</button>
 
-    <h3 id="result">Result:</h3>
+        <div id="result">Result: 0</div>
 
-    <p>Version 1 - Stable Release</p>
+        <p class="version">Version 2 - Faulty Release</p>
 
-</div>
+    </div>
 
-<script>
+    <script>
+        function addNumbers() {
 
-function calculate() {
+            let a = parseFloat(document.getElementById("num1").value);
+            let b = parseFloat(document.getElementById("num2").value);
 
-    let a = Number(document.getElementById("num1").value);
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById("result").innerHTML =
+                    "Please enter both numbers";
+                return;
+            }
 
-    let b = Number(document.getElementById("num2").value);
+            let sum = a + b;
 
-    let sum = a + b;
-
-    document.getElementById("result").innerHTML =
-    "Result: " + sum;
-
-}
-
-</script>
+            document.getElementById("result").innerHTML =
+                "Result: " + sum;
+        }
+    </script>
 
 </body>
 </html>
